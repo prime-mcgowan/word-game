@@ -8,3 +8,15 @@ const remainingSpan = document.querySelector("span");
 const playAgainButton = document.querySelector("play-again hide");
 
 const word = "magnolia";
+
+//Function to add placeholders for each letter
+const placeholder = function (word) {
+  const placeholderLetters = [];
+  for (let letter of word) {
+    console.log(letter);
+    placeholderLetters.push("●");
+  }
+  wordInProgress.innerText = placeholderLetters.join("");
+};
+
+placeholder(word);
