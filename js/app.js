@@ -54,16 +54,36 @@ const makeGuess = function (guess) {
   if (guessedLetters.includes(guess)) {
     message.innerText = `That letter has already been guessed`;
   } else guessedLetters.push(guess);
+  // call this function displays the guessed letters on the screen for the user
   guessedLettersUpdate();
+  updateWordProgress(guessedLetters);
   console.log(guessedLetters);
 };
 
 // * Create a function to show the guessed letters
 const guessedLettersUpdate = function () {
+  // empty the innerHTML of the unordered list
   guessedLettersElement.innerHTML = "";
   for (let letter of guessedLetters) {
+    // create a new list item for each letter and add it to the unordered list
     const li = document.createElement("li");
     li.innerText = letter;
     guessedLettersElement.append(li);
   }
+};
+
+// * Create a function to update the word in progress
+const updateWordProgress = function (guessedLetters) {
+  let wordUpper = word.toUpperCase();
+  const wordArray = wordUpper.split("");
+
+  const revealWord = [];
+  for (const letter of wordArray) {
+    if (guessedLetters.includes(letter)) {
+      revealWord.push(letter.toUpperCase());
+    } else {
+      revealWord.push("●");
+    }
+  }
+  wordInProgress.innerText = revealWord.join("");
 };
