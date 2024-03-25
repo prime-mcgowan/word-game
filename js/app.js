@@ -1,7 +1,7 @@
 //Global Variables
 const guessedLetters = document.querySelector(".guessed-letters");
 const guessButton = document.querySelector(".guess");
-const textInput = document.querySelector(".letter");
+const letterInput = document.querySelector(".letter");
 const wordInProgress = document.querySelector(".word-in-progress");
 const remainingGuesses = document.querySelector(".remaining");
 const remainingSpan = document.querySelector("span");
@@ -20,3 +20,15 @@ const placeholder = function (word) {
 };
 
 placeholder(word);
+
+// selectUserNumber.addEventListener("change", function (e) {
+//   const numUsers = e.target.value;
+//   fetchData(numUsers);
+// });
+
+guessButton.addEventListener("click", function (e) {
+  e.preventDefault();
+  const guess = letterInput.value;
+  console.log(guess);
+  letterInput.value = "";
+});
