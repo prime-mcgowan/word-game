@@ -54,5 +54,16 @@ const makeGuess = function (guess) {
   if (guessedLetters.includes(guess)) {
     message.innerText = `That letter has already been guessed`;
   } else guessedLetters.push(guess);
+  guessedLettersUpdate();
   console.log(guessedLetters);
+};
+
+// * Create a function to show the guessed letters
+const guessedLettersUpdate = function () {
+  guessedLettersElement.innerHTML = "";
+  for (let letter of guessedLetters) {
+    const li = document.createElement("li");
+    li.innerText = letter;
+    guessedLettersElement.append(li);
+  }
 };
