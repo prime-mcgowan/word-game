@@ -1,5 +1,5 @@
 //Global Variables
-const guessedLetters = document.querySelector(".guessed-letters");
+const guessedLettersElement = document.querySelector(".guessed-letters");
 const guessButton = document.querySelector(".guess");
 const letterInput = document.querySelector(".letter");
 const wordInProgress = document.querySelector(".word-in-progress");
@@ -9,6 +9,7 @@ const playAgainButton = document.querySelector("play-again hide");
 const message = document.querySelector(".message");
 
 const word = "magnolia";
+const guessedLetters = [];
 
 //Function to add placeholders for each letter
 const placeholder = function (word) {
@@ -46,4 +47,12 @@ const checkInput = function (input) {
   } else {
     return input;
   }
+};
+
+const makeGuess = function (guess) {
+  guess = guess.toUpperCase();
+  if (guessedLetters.includes(guess)) {
+    message.innerText = `That letter has already been guessed`;
+  } else guessedLetters.push(guess);
+  console.log(guessedLetters);
 };
