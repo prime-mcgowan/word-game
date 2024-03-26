@@ -5,12 +5,12 @@ const letterInput = document.querySelector(".letter");
 const wordInProgress = document.querySelector(".word-in-progress");
 const numberOfGuessesLeft = document.querySelector(".remaining");
 const remainingGuessesSpan = document.querySelector("span");
-const playAgainButton = document.querySelector("play-again hide");
+const playAgainButton = document.querySelector(".play-again");
 const message = document.querySelector(".message");
 
 let word = "magnolia";
 const guessedLetters = [];
-let remainingGuesses = 8;
+let remainingGuesses = 10;
 
 const getWord = async function () {
   const response = await fetch(
@@ -71,8 +71,8 @@ const makeGuess = function (guess) {
   } else guessedLetters.push(guess);
   // call this function displays the guessed letters on the screen for the user
   guessedLettersUpdate();
-  updateWordProgress(guessedLetters);
   numGuessesRemaining(guess);
+  updateWordProgress(guessedLetters);
   console.log(guessedLetters);
 };
 
@@ -132,5 +132,15 @@ const checkIfWin = function () {
     message.classList.add("win");
     message.innerHTML = `<p class="highlight"> You guessed the 
         correct word! Congrats!</p>`;
+
+    startOver();
   }
+};
+
+// * Hide and show elements
+const startOver = function () {
+  guessButton.classList.add("hide");
+  numberOfGuessesLeft.classList.add("hide");
+  guessedLettersElement.classList.add("hide");
+  playAgainButton.classList.remove("hide");
 };
