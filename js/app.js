@@ -10,7 +10,7 @@ const message = document.querySelector(".message");
 
 let word = "magnolia";
 let guessedLetters = [];
-let remainingGuesses = 50;
+let remainingGuesses = 10;
 remainingGuessesSpan.innerText = `${remainingGuesses} guesses`;
 
 const getWord = async function () {
